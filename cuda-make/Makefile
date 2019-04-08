@@ -32,7 +32,6 @@ $(NAME): $(OBJ)
 -include $(DEPS)
 
 debug: CXXFLAGS += -DDEBUG -g
-debug: CUFLAGS  += -DDEBUG -g
 debug: $(NAME)
 
 clean:
