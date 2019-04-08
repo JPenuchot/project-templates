@@ -6,11 +6,6 @@ VERSION = 0.0.1
 PREFIX    ?= /usr/local
 MANPREFIX ?= $(PREFIX)/share/man
 
-# SLURM parameters
-SLURM_HOST ?= yourhost
-SLURM_PATH ?= ~/.remote
-SLURM_NODE ?= somenode
-
 # CUDA arch
 CUDA_GPU_ARCH ?= sm_70
 
