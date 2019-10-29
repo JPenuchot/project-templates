@@ -6,8 +6,8 @@ VERSION = 0.0.1
 PREFIX    ?= /usr/local
 MANPREFIX ?= $(PREFIX)/share/man
 
-# Compilers
-LD  =  $(CPPX)
+# Linker
+LD = $(CPPX)
 
 CXXFLAGS += -O3 -march=native -fPIC
 CXXFLAGS += -DVERSION=\"$(VERSION)\"
