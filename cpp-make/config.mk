@@ -6,10 +6,11 @@ VERSION = 0.0.1
 PREFIX    ?= /usr/local
 MANPREFIX ?= $(PREFIX)/share/man
 
-# Compilers
+# Compiler/Linker
 CXX ?= clang++
+LD  ?= clang++
 
-CXXFLAGS += -O3 -march=native
+CXXFLAGS += -O3 -march=native -fPIC
 CXXFLAGS += -DVERSION=\"$(VERSION)\"
 CXXFLAGS += -Wall -Wextra -Werror -Wnull-dereference -Wold-style-cast\
                -Wdouble-promotion -Wshadow
@@ -19,5 +20,5 @@ CXXFLAGS += -std=c++17
 INCLUDES += -Iinclude
 CXXFLAGS += $(INCLUDES)
 
-LDFLAGS += -fPIC -O3
+LDFLAGS += -O3
 LDFLAGS += -lm
