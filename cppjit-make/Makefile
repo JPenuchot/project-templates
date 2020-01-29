@@ -17,11 +17,11 @@ all: $(NAME)
 
 # Compilation
 .cpp.o:
-	$(CXX) $(CXXFLAGS) -MMD -c -o $@ $<
+	$(CPPJIT_HOME)/bin/clang++ $(CXXFLAGS) -MMD -c -o $@ $<
 
 # Linking
 $(NAME): $(OBJ)
-	$(LD) -o $@ $(OBJ) $(LDFLAGS)
+	$(CPPJIT_HOME)/bin/clang++ -o $@ $(LDFLAGS) $(OBJ)
 
 # Dependencies
 -include $(DEP)

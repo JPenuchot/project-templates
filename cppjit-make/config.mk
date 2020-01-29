@@ -6,10 +6,6 @@ VERSION = 0.0.1
 PREFIX    ?= /usr/local
 MANPREFIX ?= $(PREFIX)/share/man
 
-# Linker
-LD  = $(JITHOME)/bin/clang++
-CXX = $(JITHOME)/bin/clang++
-
 CXXFLAGS += -O3 -fPIC -fjit -march=corei7
 CXXFLAGS += -DVERSION=\"$(VERSION)\"
 #CXXFLAGS += -Wall -Wextra -Werror -Wnull-dereference -Wold-style-cast \
@@ -20,5 +16,5 @@ CXXFLAGS += -std=c++2a
 INCLUDES += -Iinclude
 CXXFLAGS += $(INCLUDES)
 
-LDFLAGS += -O3 -fjit -L$(JITHOME)/lib
+LDFLAGS += -O3 -fjit -L$(CPPJIT_HOME)/lib
 LDFLAGS += -lm
