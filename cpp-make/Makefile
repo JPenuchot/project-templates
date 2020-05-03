@@ -18,7 +18,6 @@ all: $(NAME)
 # Compilation
 .cpp.o:
 	$(CXX) $(CXXFLAGS) -MT $@ -MF $(subst .cpp,.d,$<) -MMD -o $@ -c $<
-	#$(CXX) $(CXXFLAGS) -MMD -c -o $@ $<
 
 # Linking
 $(NAME): $(OBJ)
