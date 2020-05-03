@@ -17,11 +17,12 @@ all: $(NAME)
 
 # Compilation
 .cpp.o:
-	$(CXX) $(CXXFLAGS) -MMD -c -o $@ $<
+	$(CXX) $(CXXFLAGS) -MT $@ -MF $(subst .cpp,.d,$<) -MMD -o $@ -c $<
+	#$(CXX) $(CXXFLAGS) -MMD -c -o $@ $<
 
 # Linking
 $(NAME): $(OBJ)
-	$(LD) -o $@ $(OBJ) $(LDFLAGS)
+	$(CXX) -o $@ $(OBJ) $(LDFLAGS)
 
 # Dependencies
 -include $(DEP)

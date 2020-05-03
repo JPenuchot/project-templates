@@ -8,7 +8,6 @@ MANPREFIX ?= $(PREFIX)/share/man
 
 # Compiler/Linker
 CXX ?= clang++
-LD  ?= clang++
 
 CXXFLAGS += -O3 -march=native -fPIC
 CXXFLAGS += -DVERSION=\"$(VERSION)\"
