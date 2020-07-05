@@ -4,10 +4,11 @@
 include config.mk
 
 # Sources
-CXXSRC = $(shell find src -name "*.cpp")
+CPP_FILES = $(shell find src -name "*.cpp")
+HPP_FILES = $(shell find . -name "*.hpp")
 
 # Objects
-CXXOBJ = $(CXXSRC:.cpp=.o)
+CXXOBJ = $(CPP_FILES:.cpp=.o)
 OBJ    = $(CXXOBJ)
 
 # Dependency files
@@ -34,6 +35,9 @@ clean:
 
 run: $(NAME)
 	./$(NAME)
+
+format:
+	clang-format -i --style=$(CLANG_FORMAT_STYLE) $(CPP_FILES) $(HPP_FILES)
 
 dump: $(NAME)
 	objdump -dC $(NAME) > $(NAME).asm

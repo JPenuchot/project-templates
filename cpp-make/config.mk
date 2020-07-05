@@ -2,6 +2,8 @@
 NAME    = prog
 VERSION = 0.0.1
 
+CLANG_FORMAT_STYLE = Mozilla
+
 # Paths
 PREFIX    ?= /usr/local
 MANPREFIX ?= $(PREFIX)/share/man
