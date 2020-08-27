@@ -1,5 +1,4 @@
 .POSIX:
-.SUFFIXES: .cpp .hpp .h .o .d .asm
 
 include config.mk
 
@@ -17,8 +16,8 @@ DEP   = $(OBJ:.o=.d)
 all: $(NAME)
 
 # Compilation
-.cpp.o:
-	$(CXX) $(CXXFLAGS) -MT $@ -MF $(subst .cpp,.d,$<) -MMD -o $@ -c $<
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -MT $@ -MF $*.d -MMD -o $@ -c $<
 
 # Linking
 $(NAME): $(OBJ)
