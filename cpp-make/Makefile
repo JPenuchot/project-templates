@@ -3,21 +3,21 @@
 include config.mk
 
 # Sources
-CPP_FILES = $(shell find src -name "*.cpp")
+CXX_FILES = $(shell find src -name "*.cpp")
 HPP_FILES = $(shell find . -name "*.hpp")
 
 # Objects
-CXXOBJ = $(CPP_FILES:.cpp=.o)
-OBJ    = $(CXXOBJ)
+CXX_OBJ = $(CXX_FILES:.cpp=.o)
+OBJ = $(CXX_OBJ)
 
 # Dependency files
-DEP   = $(OBJ:.o=.d)
+DEP = $(OBJ:.o=.d)
 
 all: $(NAME)
 
 # Compilation
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -MT $@ -MF $*.d -MMD -o $@ -c $<
+	$(CXX) $(CXX_FLAGS) -MT $@ -MF $*.d -MMD -o $@ -c $<
 
 # Linking
 $(NAME): $(OBJ)
@@ -26,7 +26,7 @@ $(NAME): $(OBJ)
 # Dependencies
 -include $(DEP)
 
-debug: CXXFLAGS += -DDEBUG -g
+debug: CXX_FLAGS += -DDEBUG -g
 debug: $(NAME)
 
 clean:
@@ -36,9 +36,6 @@ run: $(NAME)
 	./$(NAME)
 
 format:
-	clang-format -i --style=$(CLANG_FORMAT_STYLE) $(CPP_FILES) $(HPP_FILES)
-
-dump: $(NAME)
-	objdump -dC $(NAME) > $(NAME).asm
+	clang-format -i --style=$(CLANG_FORMAT_STYLE) $(CXX_FILES) $(HPP_FILES)
 
 .PHONY: all clean echo
